@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('create image') {
+            steps {
+                sh 'docker build -t food .'
+                echo 'docker installed'
+            }
+        }
+        stage('dokcer conatainer run') {
+            steps {
+                sh 'docker run -dt --name food -p 200:80 food'
+                echo 'conatainer run'
+            }
+        }
+    }
+}
